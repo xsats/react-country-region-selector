@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import { filterRegions } from './helpers';
 import C from './constants';
+import { Select, Option } from 'antd';
 
 export default class RegionDropdown extends PureComponent {
 	constructor (props) {
@@ -87,7 +88,7 @@ export default class RegionDropdown extends PureComponent {
 		return this.state.regions.map(({ regionName, regionShortCode }) => {
 			const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
 			const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-			return <option value={value} key={regionName}>{label}</option>;
+			return <Option value={value} key={regionName}>{label}</Option>;
 		});
 	}
 
@@ -96,10 +97,10 @@ export default class RegionDropdown extends PureComponent {
 	getDefaultOption () {
 		const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
 		if (!country) {
-			return <option value="">{blankOptionLabel}</option>;
+			return <Option value="">{blankOptionLabel}</Option>;
 		}
 		if (showDefaultOption) {
-			return <option value="">{defaultOptionLabel}</option>;
+			return <Option value="">{defaultOptionLabel}</Option>;
 		}
 		return null;
 	}
@@ -128,10 +129,10 @@ export default class RegionDropdown extends PureComponent {
 		}
 
 		return (
-			<select {...attrs}>
+			<Select {...attrs}>
 				{this.getDefaultOption()}
 				{this.getRegionList()}
-			</select>
+			</Select>
 		);
 	}
 }

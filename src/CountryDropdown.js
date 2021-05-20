@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 import * as helpers from './helpers';
+import { Select, Option } from 'antd';
 
 export default class CountryDropdown extends Component {
 
@@ -18,9 +19,9 @@ export default class CountryDropdown extends Component {
 		const { valueType, labelType } = this.props;
 
 		return this.state.countries.map(([countryName, countrySlug]) => (
-			<option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
+			<Option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
 				{(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
-			</option>
+			</Option>
 		));
 	}
 
@@ -30,7 +31,7 @@ export default class CountryDropdown extends Component {
 			return null;
 		}
 		return (
-			<option value="" key="default">{defaultOptionLabel}</option>
+			<Option value="" key="default">{defaultOptionLabel}</Option>
 		);
 	}
 
@@ -55,10 +56,10 @@ export default class CountryDropdown extends Component {
 		}
 
 		return (
-			<select {...attrs}>
+			<Select {...attrs}>
 				{this.getDefaultOption()}
 				{this.getCountries()}
-			</select>
+			</Select>
 		);
 	}
 }
