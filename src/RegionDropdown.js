@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import { filterRegions } from './helpers';
 import C from './constants';
-import { Select, Option } from 'antd';
+import { Select } from 'antd';
+
+const { Option } = Select;
 
 export default class RegionDropdown extends PureComponent {
 	constructor (props) {

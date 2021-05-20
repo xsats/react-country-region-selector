@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 import * as helpers from './helpers';
-import { Select, Option } from 'antd';
+import { Select } from 'antd';
+
+const { Option } = Select;
 
 export default class CountryDropdown extends Component {
 
